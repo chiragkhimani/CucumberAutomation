@@ -1,0 +1,18 @@
+public static boolean containsValue(String filePath, String value) throws IOException {
+        try (FileInputStream fis = new FileInputStream(new File(filePath))) {
+            Workbook workbook = WorkbookFactory.create(fis);
+            Sheet   
+ sheet = workbook.getSheetAt(0); // Assuming you want to check the first sheet
+
+            for (Row row : sheet) {
+                for (Cell cell : row) {
+                    if   
+ (cell.getStringCellValue().equals(value)) {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
